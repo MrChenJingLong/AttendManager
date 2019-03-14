@@ -1,0 +1,13 @@
+{
+  "controllers": [
+    {
+      "class": "com.hjkj.cloud.attend.ui.controller.TerminalController"
+    },
+    {
+      "class": "com.hjkj.cloud.attend.ui.controller.SystemController"
+    },
+    {
+      "class": "com.hjkj.cloud.attend.ui.controller.OrganizeController"
+    }
+  ]
+}
