@@ -21,6 +21,9 @@ public class Classes extends AbstractEntity {
     // 是否弹性
     private int isElastic;
 
+    public Classes() {
+    }
+
     @OneToMany(mappedBy = "classes",cascade= CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<ClassClock> classClocks = new HashSet<>();
 

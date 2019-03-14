@@ -39,6 +39,7 @@ public class AuthCheckInterceptor implements HandlerInterceptor {
    private static final String[] IgnoreUrls = new String[] {
             "/attend/sys/.*",
             "/attend/tm/.*",
+            "/attend/org/.*",
             "/web-api",
             "/health",
             "/info"

@@ -2,7 +2,6 @@ package com.hjkj.cloud.attend.application.convert;
 
 import com.hjkj.cloud.attend.domain.model.*;
 import com.hjkj.cloud.attend.infrastructure.constant.Constant;
-import com.hjkj.cloud.attend.ui.dto.terminal.DutyDto;
 import com.hjkj.cloud.attend.ui.dto.terminal.TerminalDto;
 import com.hjkj.cloud.attend.ui.dto.terminal.UserDto;
 import com.hjkj.cloud.attend.ui.dto.web.DepartDto;
@@ -280,41 +279,6 @@ public class DomainAssemble {
             terminalDtoList.add(terminalDto);
         });
         return new PageImpl<>(terminalDtoList,terminalPage.getPageable(),terminalPage.getTotalElements());
-    }
-
-    public static DutyDto copyOfDuty(Duty duty) {
-        DutyDto dutyDto = new DutyDto();
-        dutyDto.setDuty_id(duty.getId());
-        if (null != duty.getDate()) {
-            String strDate = Constant.SIMPLE_DATE_FORMAT.format(duty.getDate());
-            String[] split = strDate.split(" ");
-            if (split.length == 2) {
-                dutyDto.setAttend_date(split[0]);
-                dutyDto.setAttend_time(split[1]);
-            }
-        }
-        dutyDto.setCompare_score(duty.getCompareScore());
-        if (null != duty.getUser()) {
-            dutyDto.setUser_id(duty.getUser().getId());
-            dutyDto.setUser_name(duty.getUser().getName());
-        }
-        if (null != duty.getTerminal()) {
-            dutyDto.setTm_id(duty.getTerminal().getId());
-            dutyDto.setTm_name(duty.getTerminal().getName());
-            dutyDto.setMac_addr(duty.getTerminal().getMacAddr());
-        }
-        return dutyDto;
-    }
-
-    public static Page<DutyDto> copyOfDutyPage(Page<Duty> dutyPage) {
-        List<Duty> dutyList = dutyPage.getContent();
-        List<DutyDto> dutyDtoList = new ArrayList<>();
-        DutyDto dutyDto;
-        for (Duty duty : dutyList) {
-            dutyDto = copyOfDuty(duty);
-            dutyDtoList.add(dutyDto);
-        }
-        return new PageImpl<>(dutyDtoList,dutyPage.getPageable(),dutyPage.getTotalElements());
     }
 
 }

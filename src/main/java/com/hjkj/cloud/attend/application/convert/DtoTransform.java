@@ -163,16 +163,19 @@ public class DtoTransform {
         return menu;
     }
 
-    public static Duty copyOfQueryDuty(@NotNull QueryDuty queryDuty) {
-        Duty duty = new Duty();
-        User user = new User();
-        user.setCardNum(queryDuty.getUser_card_num());
-        duty.setUser(user);
-        Terminal terminal = new Terminal();
-        terminal.setName(queryDuty.getTerminal_name());
-        duty.setStartDate(queryDuty.getStart_time());
-        duty.setEndDate(queryDuty.getEnd_time());
-        return duty;
+    public static Classes copyOfClassesDto(@NotNull ClassesDto classesDto){
+        Classes classes = new Classes();
+        if (classesDto == null) {
+            return null;
+        }
+        try {
+            classes.setName(classesDto.getAtt_cla_name());
+            classes.setIsElastic(classesDto.getAtt_cla_isElastic());
+            classes.setTotalHours(classesDto.getAtt_cla_totalHours());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return classes;
     }
 
 }

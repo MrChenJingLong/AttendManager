@@ -11,9 +11,6 @@ import java.util.Date;
  */
 @Entity
 @AllArgsConstructor
-@NamedEntityGraphs({
-        @NamedEntityGraph(name = "Duty.findAll", attributeNodes = {@NamedAttributeNode("terminal"),@NamedAttributeNode("user")})
-})
 public class Duty extends AbstractEntity {
 
     @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false,fetch = FetchType.LAZY)
@@ -28,12 +25,6 @@ public class Duty extends AbstractEntity {
     @Column(length = 50)
     private String time;
     private float compareScore;
-
-    // 用于查询的时间期间
-    @Transient
-    private Date startDate;
-    @Transient
-    private Date endDate;
 
     public Duty() {
     }
@@ -78,21 +69,5 @@ public class Duty extends AbstractEntity {
 
     public void setCompareScore(float compareScore) {
         this.compareScore = compareScore;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 }
