@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.hjkj.cloud.attend</groupId>
+	<artifactId>AttendManager</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<!--<parent>-->
+		<!--<groupId>org.springframework.boot</groupId>-->
+		<!--<artifactId>spring-boot-starter-parent</artifactId>-->
+		<!--<version>2.0.1.RELEASE</version>-->
+		<!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+	<!--</parent>-->
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.0.1.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>2.0.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<version>2.0.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-quartz</artifactId>
+			<version>2.0.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j</artifactId>
+			<version>1.3.8.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<version>2.0.1.RELEASE</version>
+		</dependency>
+		<!--操作JAVA BEAN 工具包-->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>2.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.43</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.mybatis.spring.boot</groupId>-->
+			<!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
+			<!--<version>1.3.2</version>-->
+		<!--</dependency>-->
+		<!--&lt;!&ndash; 分页插件 &ndash;&gt;-->
+		<!--<dependency>-->
+			<!--<groupId>com.github.pagehelper</groupId>-->
+			<!--<artifactId>pagehelper</artifactId>-->
+			<!--<version>4.1.1</version>-->
+		<!--</dependency>-->
+		<!--&lt;!&ndash;通用Mapper插件&ndash;&gt;-->
+		<!--<dependency>-->
+			<!--<groupId>tk.mybatis</groupId>-->
+			<!--<artifactId>mapper</artifactId>-->
+			<!--<version>3.3.4</version>-->
+		<!--</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<version>2.0.1.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-hibernate5 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-hibernate5</artifactId>
+			<version>2.9.6</version>
+		</dependency>
+
+		<!--query dsl-->
+		<!--<dependency>-->
+			<!--<groupId>com.querydsl</groupId>-->
+			<!--<artifactId>querydsl-jpa</artifactId>-->
+			<!--<version>4.1.4</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>com.querydsl</groupId>-->
+			<!--<artifactId>querydsl-apt</artifactId>-->
+			<!--<version>4.1.4</version>-->
+			<!--<scope>provided</scope>-->
+		<!--</dependency>-->
+		<!--query dsl end-->
+
+		<!--<dependency>-->
+			<!--<groupId>com.microsoft.sqlserver</groupId>-->
+			<!--<artifactId>sqljdbc4</artifactId>-->
+			<!--<version>4.0</version>-->
+		<!--</dependency>-->
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.6</version>
+		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.alibaba</groupId>-->
+			<!--<artifactId>druid</artifactId>-->
+			<!--<version>1.1.9</version>-->
+		<!--</dependency>-->
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/springloaded -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>springloaded</artifactId>
+			<version>1.2.6.RELEASE</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<version>2.0.1.RELEASE</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+		<!--</dependency>-->
+
+		<!--接口参数文档 依赖commons-io和json-path-->
+		<dependency>
+			<groupId>hjkj.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-document</artifactId>
+			<version>2.0.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>2.0.1.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<!--<dependencyManagement>-->
+		<!--<dependencies>-->
+			<!--<dependency>-->
+				<!--<groupId>org.springframework.cloud</groupId>-->
+				<!--<artifactId>spring-cloud-dependencies</artifactId>-->
+				<!--<version>Finchley.M8</version>-->
+				<!--<type>pom</type>-->
+				<!--<scope>import</scope>-->
+			<!--</dependency>-->
+		<!--</dependencies>-->
+	<!--</dependencyManagement>-->
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/frame</source>
+								<source>src/main/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+					<compilerArguments>
+						<extdirs>${project.basedir}/lib</extdirs>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.0.1.RELEASE</version>
+				<configuration>
+					<mainClass>com.hjkj.cloud.attend.AttendApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>com.mysema.maven</groupId>-->
+				<!--<artifactId>apt-maven-plugin</artifactId>-->
+				<!--<version>1.1.3</version>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<goals>-->
+							<!--<goal>process</goal>-->
+						<!--</goals>-->
+						<!--<configuration>-->
+							<!--<outputDirectory>target/generated-sources/java</outputDirectory>-->
+							<!--<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>-->
+						<!--</configuration>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/lib</directory>
+				<targetPath>BOOT-INF/lib/</targetPath>
+				<includes>
+					<include>*.jar</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>*.*</include>
+				</includes>
+			</resource>
+			<!--<resource>-->
+			<!--<directory>${project.basedir}/src/main/resources</directory>-->
+			<!--<targetPath>BOOT-INF/classes/</targetPath>-->
+			<!--<includes>-->
+			<!--<include>*</include>-->
+			<!--</includes>-->
+			<!--</resource>-->
+		</resources>
+	</build>
+
+</project>
