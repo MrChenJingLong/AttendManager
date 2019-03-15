@@ -39,17 +39,20 @@ public class ClockManager {
     public void addClasses(ClassesDto classesDto){
         Classes classes = null;
         String class_id = null;
+        //判断若不写带ID则为进行班次新增
         if (StringUtils.isEmpty(classesDto.getAtt_cla_id())) {
             classes = DtoTransform.copyOfClassesDto(classesDto);
             classes.setId(com.hjkj.cloud.attend.infrastructure.utils.StringUtils.genUUID(8));
             Classes claRet = iClassesRepository.saveAndFlush(classes);
             class_id = claRet.getId();
         }else{
+            //获取现有班次信息
             Optional<Classes> claPresent = iClassesRepository.findById(classesDto.getAtt_cla_id());
             if(!claPresent.isPresent()){
                 throw new ServiceException(ResultCode.FAILED.code,"班次[" + classesDto.getAtt_cla_id() + "]不存在");
             }
             classes = claPresent.get();
+            //若有数据且有效则更新修改的值
             if(null != classesDto.getAtt_cla_name()){
                 classes.setName(classesDto.getAtt_cla_name());
             }
@@ -59,6 +62,7 @@ public class ClockManager {
             if(classesDto.getAtt_cla_totalHours() > 0){
                 classes.setTotalHours(classesDto.getAtt_cla_totalHours());
             }
+            //有效班次ID
             class_id = claPresent.get().getId();
             iClassesRepository.saveAndFlush(classes);
         }
