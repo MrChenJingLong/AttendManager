@@ -13,6 +13,8 @@ import java.util.Set;
 @AllArgsConstructor
 public class Classes extends AbstractEntity {
 
+    private String id;
+
     // 名称
     @Column(length = 50)
     private String name;
@@ -22,6 +24,20 @@ public class Classes extends AbstractEntity {
     private int isElastic;
 
     public Classes() {
+    }
+
+    public Classes(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
     }
 
     @OneToMany(mappedBy = "classes",cascade= CascadeType.ALL,fetch = FetchType.LAZY)

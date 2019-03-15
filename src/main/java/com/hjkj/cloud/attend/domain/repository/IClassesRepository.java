@@ -7,4 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface IClassesRepository extends JpaRepository<Classes,String>,JpaSpecificationExecutor<Classes> {
+
+
 }

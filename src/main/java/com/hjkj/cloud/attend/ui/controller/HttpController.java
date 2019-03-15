@@ -6,6 +6,7 @@ import com.hjkj.cloud.attend.ui.dto.ReqMsg;
 import com.hjkj.cloud.attend.ui.dto.RetMsg;
 import com.hjkj.cloud.attend.ui.dto.RetMsgGenerator;
 import com.hjkj.cloud.attend.ui.dto.web.ClassesDto;
+import com.hjkj.cloud.attend.ui.dto.web.ClockDto;
 import hjkj.springframework.boot.doc.annotation.JLApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +35,15 @@ public class HttpController {
         ReqMsg reqMsg = JSON.parseObject(body, ReqMsg.class);
         ClassesDto classesDto = reqMsg.getContentObject(ClassesDto.class);
         iAttendService.addClssesDto(classesDto);
+        return RetMsgGenerator.genSuccessRetMsg();
+    }
+
+    @JLApiParam
+    @RequestMapping("/attend/clock/create")
+    public RetMsg addClock(@RequestBody String body){
+        ReqMsg reqMsg = JSON.parseObject(body, ReqMsg.class);
+        ClockDto clockDto = reqMsg.getContentObject(ClockDto.class);
+        iAttendService.addClockDto(clockDto);
         return RetMsgGenerator.genSuccessRetMsg();
     }
 }

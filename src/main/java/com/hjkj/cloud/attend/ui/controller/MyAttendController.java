@@ -1,13 +1,13 @@
 package com.hjkj.cloud.attend.ui.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.hjkj.cloud.attend.application.service.AttendService;
 import com.hjkj.cloud.attend.application.service.AuthService;
+import com.hjkj.cloud.attend.application.service.IAttendService;
+import com.hjkj.cloud.attend.domain.model.Duty;
 import com.hjkj.cloud.attend.infrastructure.annotation.Auth;
 import com.hjkj.cloud.attend.ui.dto.ReqMsg;
 import com.hjkj.cloud.attend.ui.dto.RetMsg;
 import com.hjkj.cloud.attend.ui.dto.RetMsgGenerator;
-import com.hjkj.cloud.attend.ui.dto.terminal.DutyDto;
 import com.hjkj.cloud.attend.ui.dto.terminal.UserDto;
 import com.hjkj.cloud.attend.ui.dto.web.QueryDuty;
 import hjkj.springframework.boot.doc.annotation.JLApiParam;
@@ -25,7 +25,7 @@ public class MyAttendController {
     @Autowired
     private AuthService authService;
     @Autowired
-    private AttendService attendService;
+    private IAttendService attendService;
 
     // 分页查询用户考勤记录
     @JLApiParam(name = "content",value = "com.hjkj.cloud.attend.ui.dto.web.RoleDto",type = PropType.JSON)
@@ -37,7 +37,7 @@ public class MyAttendController {
         UserDto userDto = authService.getUserByToken(token);
         QueryDuty queryDuty = reqMsg.getContentObject(QueryDuty.class);
         queryDuty.setUser_card_num(userDto.getCard_num());
-        Page<DutyDto> dutyDtos = attendService.queryDutyInfo(queryDuty);
+        Page<Duty> dutyDtos = attendService.queryDutyInfo(queryDuty);
         return RetMsgGenerator.genSuccessRetMsg("分页查询用户考勤记录",dutyDtos);
     }
 

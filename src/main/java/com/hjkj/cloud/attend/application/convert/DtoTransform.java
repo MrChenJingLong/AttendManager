@@ -163,19 +163,56 @@ public class DtoTransform {
         return menu;
     }
 
+    /**
+     * 班次开放实体转换为数据库实体类
+     * @param classesDto
+     * @return
+     */
     public static Classes copyOfClassesDto(@NotNull ClassesDto classesDto){
         Classes classes = new Classes();
         if (classesDto == null) {
             return null;
         }
         try {
-            classes.setName(classesDto.getAtt_cla_name());
-            classes.setIsElastic(classesDto.getAtt_cla_isElastic());
-            classes.setTotalHours(classesDto.getAtt_cla_totalHours());
+            if(null != classesDto.getAtt_cla_name()){
+                classes.setName(classesDto.getAtt_cla_name());
+            }
+            if(classesDto.getAtt_cla_isElastic() > 0){
+                classes.setIsElastic(classesDto.getAtt_cla_isElastic());
+            }
+            if(classesDto.getAtt_cla_totalHours() > 0){
+                classes.setTotalHours(classesDto.getAtt_cla_totalHours());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return classes;
+    }
+    /**
+     * 班次开放实体转换为班次时段数据库实体类
+     * @param classClockDto
+     * @return
+     */
+    public static ClassClock copyOfClassClockDto(@NotNull ClassClockDto classClockDto){
+        ClassClock classClock = new ClassClock();
+        if (classClockDto == null) {
+            return null;
+        }
+        try {
+            classClock.setAllowEarlyTime(classClockDto.getAllowEarlyTime());
+            classClock.setAllowLateTime(classClockDto.getAllowLateTime());
+            classClock.setOffWorkClockDate(classClockDto.getOffWorkClockDate());
+            classClock.setOffWorkClockState(classClockDto.getOffWorkClockState());
+            classClock.setOffWorkDate(classClockDto.getOffWorkDate());
+            classClock.setOnWorkClockDate(classClockDto.getOnWorkClockDate());
+            classClock.setOnWorkClockState(classClockDto.getOnWorkClockState());
+            classClock.setOnWorkDate(classClockDto.getOnWorkDate());
+            classClock.setClasses(new Classes(classClockDto.getCla_id()));
+            classClock.setClock(new Clock(classClockDto.getClo_id()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return classClock;
     }
 
 }

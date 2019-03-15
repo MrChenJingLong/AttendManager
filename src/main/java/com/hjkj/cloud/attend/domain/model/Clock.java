@@ -13,14 +13,36 @@ import java.util.Set;
 @AllArgsConstructor
 public class Clock extends AbstractEntity {
 
+    private String id;
+
     // 时段名称
     @Column(length = 50)
     private String name;
     // 时段序号
     private int sort;
 
+
     @OneToMany(mappedBy = "clock",cascade= CascadeType.ALL,orphanRemoval = true)
     private Set<ClassClock> classClocks = new HashSet<>();
+
+
+    public Clock() {
+    }
+
+    public Clock(String id) {
+        this.id = id;
+    }
+
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

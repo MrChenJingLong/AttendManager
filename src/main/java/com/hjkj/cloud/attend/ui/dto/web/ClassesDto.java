@@ -1,7 +1,7 @@
 package com.hjkj.cloud.attend.ui.dto.web;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.ArrayList;
 
 /**
  * @Auther: CHEN
@@ -20,27 +20,7 @@ public class ClassesDto  extends BasePage implements Serializable {
     // 是否弹性
     private int att_cla_isElastic;
 
-    private String att_clo_id;
-
-    // 上班打卡时间
-    private Date onWorkClockDate;
-    // 上班时间
-    private Date onWorkDate;
-    // 上班是否需要打卡
-    private int onWorkClockState;
-    // 下班时间
-    private Date offWorkDate;
-    // 下班打卡时间
-    private Date offWorkClockDate;
-    // 下班是否需要打卡
-    private int offWorkClockState;
-    // 允许迟到时间
-    private int allowLateTime;
-    // 允许早退时间
-    private int allowEarlyTime;
-
-
-
+    private ArrayList<ClassClockDto> claCloDtosList;
 
 
 
@@ -80,75 +60,12 @@ public class ClassesDto  extends BasePage implements Serializable {
         this.att_cla_isElastic = att_cla_isElastic;
     }
 
-    public String getAtt_clo_id() {
-        return att_clo_id;
+
+    public ArrayList<ClassClockDto> getClaCloDtosList() {
+        return claCloDtosList;
     }
 
-    public void setAtt_clo_id(String att_clo_id) {
-        this.att_clo_id = att_clo_id;
-    }
-
-    public Date getOnWorkClockDate() {
-        return onWorkClockDate;
-    }
-
-    public void setOnWorkClockDate(Date onWorkClockDate) {
-        this.onWorkClockDate = onWorkClockDate;
-    }
-
-    public Date getOnWorkDate() {
-        return onWorkDate;
-    }
-
-    public void setOnWorkDate(Date onWorkDate) {
-        this.onWorkDate = onWorkDate;
-    }
-
-    public int getOnWorkClockState() {
-        return onWorkClockState;
-    }
-
-    public void setOnWorkClockState(int onWorkClockState) {
-        this.onWorkClockState = onWorkClockState;
-    }
-
-    public Date getOffWorkDate() {
-        return offWorkDate;
-    }
-
-    public void setOffWorkDate(Date offWorkDate) {
-        this.offWorkDate = offWorkDate;
-    }
-
-    public Date getOffWorkClockDate() {
-        return offWorkClockDate;
-    }
-
-    public void setOffWorkClockDate(Date offWorkClockDate) {
-        this.offWorkClockDate = offWorkClockDate;
-    }
-
-    public int getOffWorkClockState() {
-        return offWorkClockState;
-    }
-
-    public void setOffWorkClockState(int offWorkClockState) {
-        this.offWorkClockState = offWorkClockState;
-    }
-
-    public int getAllowLateTime() {
-        return allowLateTime;
-    }
-
-    public void setAllowLateTime(int allowLateTime) {
-        this.allowLateTime = allowLateTime;
-    }
-
-    public int getAllowEarlyTime() {
-        return allowEarlyTime;
-    }
-
-    public void setAllowEarlyTime(int allowEarlyTime) {
-        this.allowEarlyTime = allowEarlyTime;
+    public void setClaCloDtosList(ArrayList<ClassClockDto> claCloDtosList) {
+        this.claCloDtosList = claCloDtosList;
     }
 }

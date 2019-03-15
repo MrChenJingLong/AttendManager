@@ -24,6 +24,10 @@ public class ClassClock extends AbstractEntity {
     @JoinColumn(name = "clock_id")
     private Clock clock;
 
+
+    public ClassClock() {
+    }
+
     // 上班打卡时间
     private Date onWorkClockDate;
     // 上班时间
