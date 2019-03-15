@@ -1,6 +1,7 @@
 package com.hjkj.cloud.attend.application.service;
 
 import com.hjkj.cloud.attend.domain.model.Duty;
+import com.hjkj.cloud.attend.ui.dto.terminal.DutyDto;
 import com.hjkj.cloud.attend.ui.dto.web.ClassesDto;
 import com.hjkj.cloud.attend.ui.dto.web.ClockDto;
 import com.hjkj.cloud.attend.ui.dto.web.QueryDuty;
@@ -10,7 +11,7 @@ public interface IAttendService {
 
 
 
-    Page<Duty> queryDutyInfo(QueryDuty queryDuty);
+    Page<DutyDto> queryDutyInfo(QueryDuty queryDuty);
 
     /**
      * 添加班次信息

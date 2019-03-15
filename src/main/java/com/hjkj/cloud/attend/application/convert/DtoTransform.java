@@ -215,4 +215,16 @@ public class DtoTransform {
         return classClock;
     }
 
+    public static Duty copyOfQueryDuty(@NotNull QueryDuty queryDuty) {
+        Duty duty = new Duty();
+        User user = new User();
+        user.setCardNum(queryDuty.getUser_card_num());
+        duty.setUser(user);
+        Terminal terminal = new Terminal();
+        terminal.setName(queryDuty.getTerminal_name());
+        duty.setStartDate(queryDuty.getStart_time());
+        duty.setEndDate(queryDuty.getEnd_time());
+        return duty;
+    }
+
 }

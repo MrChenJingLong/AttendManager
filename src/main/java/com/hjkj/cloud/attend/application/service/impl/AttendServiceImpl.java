@@ -1,9 +1,12 @@
 package com.hjkj.cloud.attend.application.service.impl;
 
+import com.hjkj.cloud.attend.application.convert.DomainAssemble;
+import com.hjkj.cloud.attend.application.convert.DtoTransform;
 import com.hjkj.cloud.attend.application.service.IAttendService;
 import com.hjkj.cloud.attend.domain.model.Duty;
 import com.hjkj.cloud.attend.domain.service.ClockManager;
 import com.hjkj.cloud.attend.domain.service.DutyManager;
+import com.hjkj.cloud.attend.ui.dto.terminal.DutyDto;
 import com.hjkj.cloud.attend.ui.dto.web.ClassesDto;
 import com.hjkj.cloud.attend.ui.dto.web.ClockDto;
 import com.hjkj.cloud.attend.ui.dto.web.QueryDuty;
@@ -22,8 +25,10 @@ public class AttendServiceImpl implements IAttendService {
     private DutyManager dutyManager;
 
     @Override
-    public Page<Duty> queryDutyInfo(QueryDuty queryDuty) {
-        return null;
+    public Page<DutyDto> queryDutyInfo(QueryDuty queryDuty) {
+        Page<Duty> dutyPage = dutyManager.findDutyCriteria(queryDuty.getPage(), queryDuty.getSize(),
+                DtoTransform.copyOfQueryDuty(queryDuty));
+        return DomainAssemble.copyOfDutyPage(dutyPage);
     }
 
     @Override
